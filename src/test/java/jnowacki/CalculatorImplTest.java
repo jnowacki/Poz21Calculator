@@ -2,7 +2,7 @@ package jnowacki;
 
 import org.junit.*;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class CalculatorImplTest {
 
@@ -26,6 +26,7 @@ public class CalculatorImplTest {
 
     @After
     public void tearDown() {
+        calculator.clear();
         System.out.println("after method");
     }
 
@@ -58,5 +59,18 @@ public class CalculatorImplTest {
 
         //then
        assertEquals("Not equal", expected, calculator.display());
+    }
+
+    @Test
+    public void shouldClearNumbersFromDisplayWhenNotEmpty() {
+        //given
+        calculator.pressNumber(5);
+        assertFalse(calculator.display().isEmpty());
+
+        //when
+        calculator.clear();
+
+        //then
+        assertTrue(calculator.display().isEmpty());
     }
 }

@@ -26,7 +26,7 @@ public class CalculatorImpl implements Calculator {
     }
 
     public void clear() {
-
+        disp = "";
     }
 
     public void multi(int numberA, int numberB) {
