@@ -73,4 +73,49 @@ public class CalculatorImplTest {
         //then
         assertTrue(calculator.display().isEmpty());
     }
+
+    @Test
+    public void shouldAddTwoPositiveNumbers() {
+        //given
+        int a = 3;
+        int b = 4;
+        String expected = "7";
+
+        //when
+        calculator.add(a, b);
+
+        //then
+        assertEquals(expected, calculator.display());
+    }
+
+    @Test
+    public void shouldAddTwoPositiveNumbersWhenDisplayNotEmpty() {
+        //given
+        int a = 3;
+        int b = 4;
+        String expected = "7";
+
+        calculator.pressNumber(5);
+        assertFalse(calculator.display().isEmpty());
+
+        //when
+        calculator.add(a, b);
+
+        //then
+        assertEquals(expected, calculator.display());
+    }
+
+    @Test
+    public void shouldTestMultipleNumbers(){
+        testAndAssertAdd("5", 3, 2);
+        testAndAssertAdd("13", 3, 10);
+        testAndAssertAdd("-5", 3, -8);
+    }
+
+    private void testAndAssertAdd(String expected, int a, int b) {
+        calculator.add(a, b);
+        assertEquals(expected, calculator.display());
+    }
+
+
 }
