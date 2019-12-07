@@ -24,13 +24,4 @@ public class CalculatorImplTest {
         System.out.println("after method");
     }
 
-    @Test
-    public void pressNumber() {
-        System.out.println("test1");
-    }
-
-    @Test
-    public void pressNumber2() {
-        System.out.println("test2");
-    }
 }

@@ -2,12 +2,15 @@ package jnowacki;
 
 public class CalculatorImpl implements Calculator {
 
-    public void pressNumber(Object number) {
+    private String disp = "";
 
+    public void pressNumber(Object number) {
+        StringBuilder builder = new StringBuilder(disp);
+        disp = builder.append(number).toString();
     }
 
     public String display() {
-        return null;
+        return disp;
     }
 
     public void add(int numberA, int numberB) {
