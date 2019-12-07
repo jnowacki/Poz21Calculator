@@ -125,4 +125,16 @@ public class CalculatorImplTest {
     public void shouldThrowNewExWhenDivBy0 (){
         calculator.div(2, 0);
     }
+
+    @Test
+    public void testExV1() {
+        try {
+            calculator.div(2, 0);
+            fail();
+        } catch (Exception e) {
+            assertTrue(e instanceof IllegalArgumentException);
+            assertTrue(e.getCause() instanceof ArithmeticException);
+            assertEquals(e.getMessage(), "Nie dziel przez 0");
+        }
+    }
 }
