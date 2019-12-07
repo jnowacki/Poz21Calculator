@@ -1,6 +1,7 @@
 package jnowacki;
 
 import org.junit.*;
+import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.*;
 
@@ -9,7 +10,7 @@ public class CalculatorImplTest {
     private static CalculatorImpl calculator;
 
     @BeforeClass
-    public static void setUpClass(){
+    public static void setUpClass() {
         System.out.println("before class");
         calculator = new CalculatorImpl();
     }
@@ -45,7 +46,7 @@ public class CalculatorImplTest {
         calculator.pressNumber(c);
 
         //then
-       assertEquals("Not equal", expected, calculator.display());
+        assertEquals("Not equal", expected, calculator.display());
     }
 
     @Test
@@ -58,7 +59,7 @@ public class CalculatorImplTest {
         calculator.pressNumber(a);
 
         //then
-       assertEquals("Not equal", expected, calculator.display());
+        assertEquals("Not equal", expected, calculator.display());
     }
 
     @Test
@@ -106,7 +107,7 @@ public class CalculatorImplTest {
     }
 
     @Test
-    public void shouldTestMultipleNumbers(){
+    public void shouldTestMultipleNumbers() {
         testAndAssertAdd("5", 3, 2);
         testAndAssertAdd("13", 3, 10);
         testAndAssertAdd("-5", 3, -8);
@@ -117,5 +118,23 @@ public class CalculatorImplTest {
         assertEquals(expected, calculator.display());
     }
 
+    @Test
+    public void testExV1() {
+        try {
+            throw new IllegalArgumentException("ex1");
+        } catch (Exception e) {
+            assertEquals(e.getMessage(), "ex1");
+        }
+    }
 
+    @Rule
+    public ExpectedException expectedException = ExpectedException.none();
+
+    @Test
+    public void testExV2() {
+        expectedException.expectMessage("asd");
+        expectedException.expect(IllegalArgumentException.class);
+
+        throw new IllegalArgumentException("asd");
+    }
 }
