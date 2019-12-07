@@ -2,13 +2,16 @@ package jnowacki;
 
 import org.junit.*;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class CalculatorImplTest {
+
+    private static CalculatorImpl calculator;
 
     @BeforeClass
     public static void setUpClass(){
         System.out.println("before class");
+        calculator = new CalculatorImpl();
     }
 
     @Before
@@ -33,13 +36,25 @@ public class CalculatorImplTest {
         int b = 2;
         int c = 7;
 
-        CalculatorImpl calculator = new CalculatorImpl();
         String expected = "527";
 
         //when
         calculator.pressNumber(a);
         calculator.pressNumber(b);
         calculator.pressNumber(c);
+
+        //then
+       assertEquals("Not equal", expected, calculator.display());
+    }
+
+    @Test
+    public void shouldDisplayNumberInWindowWhen0Pressed() {
+        //given
+        int a = 0;
+        String expected = "0";
+
+        //when
+        calculator.pressNumber(a);
 
         //then
        assertEquals("Not equal", expected, calculator.display());
