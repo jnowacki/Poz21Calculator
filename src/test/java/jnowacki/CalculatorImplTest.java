@@ -2,6 +2,8 @@ package jnowacki;
 
 import org.junit.*;
 
+import static org.junit.Assert.*;
+
 public class CalculatorImplTest {
 
     @BeforeClass
@@ -24,4 +26,22 @@ public class CalculatorImplTest {
         System.out.println("after method");
     }
 
+    @Test
+    public void shouldDisplayNumberInWindow() {
+        //given
+        int a = 5;
+        int b = 2;
+        int c = 7;
+
+        CalculatorImpl calculator = new CalculatorImpl();
+        String expected = "527";
+
+        //when
+        calculator.pressNumber(a);
+        calculator.pressNumber(b);
+        calculator.pressNumber(c);
+
+        //then
+       assertEquals("Not equal", expected, calculator.display());
+    }
 }
