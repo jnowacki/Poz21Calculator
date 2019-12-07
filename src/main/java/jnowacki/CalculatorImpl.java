@@ -25,6 +25,12 @@ public class CalculatorImpl implements Calculator {
 
     public void div(int numberA, int numberB) throws IllegalArgumentException {
 
+        try {
+            StringBuilder builder = new StringBuilder();
+            disp = builder.append(numberA / numberB).toString();
+        } catch (ArithmeticException e) {
+            throw new IllegalArgumentException("Nie dziel przez 0", e);
+        }
     }
 
     public void clear() {

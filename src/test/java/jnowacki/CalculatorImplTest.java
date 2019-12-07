@@ -118,23 +118,11 @@ public class CalculatorImplTest {
         assertEquals(expected, calculator.display());
     }
 
-    @Test
-    public void testExV1() {
-        try {
-            throw new IllegalArgumentException("ex1");
-        } catch (Exception e) {
-            assertEquals(e.getMessage(), "ex1");
-        }
-    }
-
     @Rule
     public ExpectedException expectedException = ExpectedException.none();
 
     @Test
-    public void testExV2() {
-        expectedException.expectMessage("asd");
-        expectedException.expect(IllegalArgumentException.class);
-
-        throw new IllegalArgumentException("asd");
+    public void shouldThrowNewExWhenDivBy0 (){
+        calculator.div(2, 0);
     }
 }
