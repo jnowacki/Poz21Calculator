@@ -19,7 +19,8 @@ public class CalculatorImpl implements Calculator {
     }
 
     public void sub(int numberA, int numberB) {
-
+        StringBuilder builder = new StringBuilder();
+        disp = builder.append(numberA - numberB).toString();
     }
 
     public void div(int numberA, int numberB) throws IllegalArgumentException {

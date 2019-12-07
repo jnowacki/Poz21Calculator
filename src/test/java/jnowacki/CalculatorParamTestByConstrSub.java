@@ -1,0 +1,41 @@
+package jnowacki;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+
+import java.util.Arrays;
+import java.util.Collection;
+
+import static junit.framework.TestCase.assertEquals;
+
+@RunWith(value = Parameterized.class)
+public class CalculatorParamTestByConstrSub {
+
+    private int a;
+    private int b;
+    private String result;
+
+    public CalculatorParamTestByConstrSub(int a, int b, String result) {
+        this.a = a;
+        this.b = b;
+        this.result = result;
+    }
+
+    @Parameterized.Parameters(name = "{index}: testAdd({0}+{1}) = {2}")
+    public static Collection<Object[]> data() {
+        return Arrays.asList(new Object[][]{
+                {1, 7, "-6"},
+                {3, 6, "-3"},
+                {1, 1, "0"}
+        });
+    }
+
+    @Test
+    public void testAdd(){
+        CalculatorImpl calculator = new CalculatorImpl();
+        calculator.sub(a, b);
+
+        assertEquals(result, calculator.display());
+    }
+}

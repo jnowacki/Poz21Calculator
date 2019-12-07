@@ -19,4 +19,13 @@ public class JunitParamRunner {
         assertEquals(result, calculator.display());
     }
 
+    @Test
+    @Parameters({"1, 2, -1", "-2, -5, 3"})
+    public void testSub(int a, int b, String result) {
+        CalculatorImpl calculator = new CalculatorImpl();
+        calculator.sub(a, b);
+
+        assertEquals(result, calculator.display());
+    }
+
 }
