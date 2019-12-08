@@ -1,6 +1,7 @@
 package jnowacki;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class PeopleService {
 
@@ -12,5 +13,11 @@ public class PeopleService {
 
     public List<Person> getAllFromService() {
       return peopleRepository.getAll();
+    };
+
+    public List<Integer> getDoubleAgeFromAll() {
+        return peopleRepository.getAll().stream()
+                .map(person -> person.getAge() * 2)
+                .collect(Collectors.toList());
     };
 }

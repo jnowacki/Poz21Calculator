@@ -11,7 +11,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class MockitoTest {
@@ -46,5 +46,6 @@ public class MockitoTest {
 
         assertThat(peopleService.getDoubleAgeFromAll())
                 .containsExactlyElementsOf(expected);
+        verify(peopleRepository, times(1)).getAll();
     }
 }
