@@ -8,6 +8,8 @@ public class PersonTest {
 
     @Test
     public void t1() {
-        assertThat(new Person( 19, "asd")).isOver18();
+        assertThat(new Person( 18, "asd"))
+                .isOver18()
+                .isUnder65();
     }
 }
