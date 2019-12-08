@@ -2,6 +2,9 @@ package jnowacki;
 
 import org.assertj.core.api.AbstractAssert;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class CarAssert extends AbstractAssert<CarAssert, Car> {
 
     public CarAssert(Car actual) {
@@ -16,10 +19,17 @@ public class CarAssert extends AbstractAssert<CarAssert, Car> {
     public CarAssert isOk() {
         isNotNull();
 
-        if (*) {
-            failWithMessage("Expected person age to be under 65, was <%s>", actual.getAge());
+        List<String> frenchCars = Arrays.asList("citroen", "peugeot", "renault");
+        String actualName = actual.getManufacturer().toLowerCase();
+
+        if (frenchCars.contains(actualName) || actualName.startsWith("f")) {
+            failWithMessage("Car should not be french or strating with f");
         }
 
         return this;
+    }
+
+    public CarAssert isItSafeToDriveItInYear(int year) {
+
     }
 }
