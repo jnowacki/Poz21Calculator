@@ -13,6 +13,10 @@ public class Car {
         this.productionYear = productionYear;
     }
 
+    public Car(String manufacturer) {
+        this.manufacturer = manufacturer;
+    }
+
     public Car(String manufacturer, int productionYear) {
         this.manufacturer = manufacturer;
         this.productionYear = productionYear;

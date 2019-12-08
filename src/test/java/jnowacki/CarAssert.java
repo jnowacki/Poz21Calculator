@@ -32,8 +32,8 @@ public class CarAssert extends AbstractAssert<CarAssert, Car> {
     public CarAssert isItSafeToDriveItInYear(int year) {
         isNotNull();
 
-        if () {
-            failWithMessage("Car is older than 25 in year", year);
+        if (year - actual.getProductionYear() >= 25) {
+            failWithMessage("Car is older than 25 years, produced in: <%s>", year);
         }
 
         return this;

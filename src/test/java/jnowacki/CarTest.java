@@ -10,4 +10,10 @@ public class CarTest {
     public void testCar() {
         assertThat(new Car("mazda")).isOk();
     }
+
+    @Test
+    public void testCarAge() {
+        assertThat(new Car("mazda", 2000))
+        .isItSafeToDriveItInYear(2025);
+    }
 }
