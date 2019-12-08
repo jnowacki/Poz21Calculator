@@ -30,6 +30,12 @@ public class CarAssert extends AbstractAssert<CarAssert, Car> {
     }
 
     public CarAssert isItSafeToDriveItInYear(int year) {
+        isNotNull();
 
+        if () {
+            failWithMessage("Car is older than 25 in year", year);
+        }
+
+        return this;
     }
 }

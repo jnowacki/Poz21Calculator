@@ -8,6 +8,6 @@ public class CarTest {
 
     @Test
     public void testCar() {
-        assertThat(new Car("ford")).isOk();
+        assertThat(new Car("mazda")).isOk();
     }
 }
