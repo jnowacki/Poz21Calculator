@@ -9,6 +9,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
@@ -28,5 +29,22 @@ public class MockitoTest {
         when(peopleRepository.getAll()).thenReturn(ppl);
 
         assertEquals(peopleService.getAllFromService().size(), 2);
+    }
+
+    @Test
+    public void shouldReturnDoubledAge() {
+        List<Person> ppl = Arrays.asList(
+                new Person(21),
+                new Person(37),
+                new Person(23),
+                new Person(24),
+                new Person(25));
+
+        List<Integer> expected = Arrays.asList(42, 74, 46, 48, 50);
+
+        when(peopleRepository.getAll()).thenReturn(ppl);
+
+        assertThat(peopleService.getDoubleAgeFromAll())
+                .containsExactlyElementsOf(expected);
     }
 }
