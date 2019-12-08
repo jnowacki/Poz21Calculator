@@ -19,10 +19,15 @@ public class HamcrestExercisesTest {
 
     @Test
     public void emptyStringShouldBeEmpty() {
+        assertThat("", isEmptyOrNullString());
     }
 
     @Test
     public void doesStringContainKonfabulacja() {
+
+        String value = "afdsfdsfdsfaqwtjjfvvjfyu";
+
+        assertThat(value, not(containsString("konfabulacja")));
     }
 
     @Test
