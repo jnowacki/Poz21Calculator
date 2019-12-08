@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
 
+import static jnowacki.ThreeLetterItemCountListMatcher.hasOnly3LetterCountItems;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
@@ -118,5 +119,12 @@ public class HamcrestExercisesTest {
         Integer testedValue = 15;
 
         assertThat(new NumberWrapper(), returnsRightNumber(is(testedValue)));
+    }
+
+    @Test
+    public void shouldHaveOnly3LetterItems() {
+        List<String> myList = Arrays.asList("as", "sda", "ert");
+
+        assertThat(myList, hasOnly3LetterCountItems());
     }
 }
