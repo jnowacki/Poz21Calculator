@@ -6,9 +6,9 @@ import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.Predicate;
 
-import static jnowacki.ThreeLetterItemCountListMatcher.hasOnly3LetterCountItems;
+import static jnowacki.AnyLetterItemCountListMatcher.hasOnly3LetterCountItems;
+import static jnowacki.PersonSchoolAgeMatcher.isEligibleToSchool;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
@@ -123,8 +123,15 @@ public class HamcrestExercisesTest {
 
     @Test
     public void shouldHaveOnly3LetterItems() {
-        List<String> myList = Arrays.asList("as", "sda", "ert");
+        List<String> myList = Arrays.asList("as", "da", "rt");
 
-        assertThat(myList, hasOnly3LetterCountItems());
+        assertThat(myList, hasOnly3LetterCountItems(2));
+    }
+
+    @Test
+    public void testPersonAge() {
+        assertThat(new Person(1), not(isEligibleToSchool()));
+        assertThat(new Person(6), isEligibleToSchool());
+        assertThat(new Person(12), isEligibleToSchool());
     }
 }
