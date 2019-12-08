@@ -118,14 +118,6 @@ public class CalculatorImplTest {
         assertEquals(expected, calculator.display());
     }
 
-    @Rule
-    public ExpectedException expectedException = ExpectedException.none();
-
-    @Test
-    public void shouldThrowNewExWhenDivBy0 (){
-        calculator.div(2, 0);
-    }
-
     @Test
     public void testExV1() {
         try {
@@ -136,5 +128,16 @@ public class CalculatorImplTest {
             assertTrue(e.getCause() instanceof ArithmeticException);
             assertEquals(e.getMessage(), "Nie dziel przez 0");
         }
+    }
+
+    @Rule
+    public ExpectedException expectedException = ExpectedException.none();
+
+    @Test
+    public void testExV2() {
+        expectedException.expectMessage("Nie dziel przez 0");
+        expectedException.expect(IllegalArgumentException.class);
+
+        calculator.div(2, 0);
     }
 }
