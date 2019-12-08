@@ -72,4 +72,51 @@ public class HamcrestExercisesTest {
             }
         };
     }
+
+    private static Matcher<String> hasGivenLength(Matcher<? super Integer> matcher) {
+        return new FeatureMatcher<String, Integer>(matcher,
+                "a String that begins with", "first letter") {
+            @Override
+            protected Integer featureValueOf(String actual) {
+                return actual.length();
+            }
+        };
+    }
+
+    @Test
+    public void shouldHaveLength3() {
+        String testedValue = "aaa";
+
+        assertThat(testedValue, hasGivenLength(is(3)));
+    }
+
+    @Test
+    public void shouldHaveLength6() {
+        String testedValue = "aaaaaa";
+
+        assertThat(testedValue, hasGivenLength(is(6)));
+    }
+
+    @Test
+    public void shouldHaveLength12() {
+        String testedValue = "aaaaaaaaaaaa";
+
+        assertThat(testedValue, hasGivenLength(is(12)));
+    }
+
+    public static Matcher<NumberWrapper> returnsRightNumber(Matcher<? super Integer> matcher) {
+        return new FeatureMatcher<NumberWrapper, Integer>(matcher, "a wrapper that returns", "returned value") {
+            @Override
+            protected Integer featureValueOf(NumberWrapper actual) {
+                return actual.getNumber();
+            }
+        };
+    }
+
+    @Test
+    public void shouldReturn15() {
+        Integer testedValue = 15;
+
+        assertThat(new NumberWrapper(), returnsRightNumber(is(testedValue)));
+    }
 }
